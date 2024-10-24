@@ -1,0 +1,19 @@
+[[main]]
+none = "none"
+
+[[main]]
+name = "home"
+pre = "heart"
+pageRef = "/"
+identifier = "lwBP0XGysZ"
+weight = 9999
+
+[[main]]
+name = "x"
+pre = "twitter"
+url = "https://x.com/opps3c"
+identifier = "e5hkd9HCeQ"
+weight = 9999
+
+[[footer]]
+none = "none"

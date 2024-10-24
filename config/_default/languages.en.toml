@@ -1,0 +1,13 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "1337.coffee"
+
+[params]
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+description = "Take a coffee and a break."
+author = { name = "oppsec", headline = "Pentester and design enjoyer" }
