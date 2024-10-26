@@ -3,9 +3,14 @@ none = "none"
 
 [[main]]
 name = "home"
-pre = "heart"
 pageRef = "/"
 identifier = "lwBP0XGysZ"
+weight = 9999
+
+[[main]]
+name = "posts"
+pageRef = "/posts"
+identifier = "lwBP0XGysY"
 weight = 9999
 
 [[main]]
