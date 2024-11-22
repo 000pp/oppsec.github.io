@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Security Descriptor, o que é e onde vive. &middot; 1337.coffee</title>
-  <meta name="title" content="Security Descriptor, o que é e onde vive. &middot; 1337.coffee" />
+  <title>Attacking Azure Blob Storage Services &middot; 1337.coffee</title>
+  <meta name="title" content="Attacking Azure Blob Storage Services &middot; 1337.coffee" />
   
-  <meta name="description" content="a description" />
-  <meta name="keywords" content="windows, ldap, " />
+  <meta name="description" content="Who knows what is Azure Blob Storage? And... what I can do with that as a pentester?" />
+  <meta name="keywords" content="azure, pentest, microsoft, windows, " />
   
   
-  <link rel="canonical" href="//localhost:1313/posts/security-descriptor/" />
+  <link rel="canonical" href="//localhost:1313/posts/attacking-azure-blob-storage-services/" />
   
   
   
@@ -63,24 +63,26 @@
   
   
   
-  <meta property="og:url" content="//localhost:1313/posts/security-descriptor/">
+  <meta property="og:url" content="//localhost:1313/posts/attacking-azure-blob-storage-services/">
   <meta property="og:site_name" content="1337.coffee">
-  <meta property="og:title" content="Security Descriptor, o que é e onde vive.">
-  <meta property="og:description" content="a description">
+  <meta property="og:title" content="Attacking Azure Blob Storage Services">
+  <meta property="og:description" content="Who knows what is Azure Blob Storage? And... what I can do with that as a pentester?">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-24T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-11-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-22T00:00:00+00:00">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="Pentest">
+    <meta property="article:tag" content="Microsoft">
     <meta property="article:tag" content="Windows">
-    <meta property="article:tag" content="Ldap">
-    <meta property="og:image" content="//localhost:1313/posts/security-descriptor/featured.jpg">
+    <meta property="og:image" content="//localhost:1313/posts/attacking-azure-blob-storage-services/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="//localhost:1313/posts/security-descriptor/featured.jpg">
-  <meta name="twitter:title" content="Security Descriptor, o que é e onde vive.">
-  <meta name="twitter:description" content="a description">
+  <meta name="twitter:image" content="//localhost:1313/posts/attacking-azure-blob-storage-services/featured.png">
+  <meta name="twitter:title" content="Attacking Azure Blob Storage Services">
+  <meta name="twitter:description" content="Who knows what is Azure Blob Storage? And... what I can do with that as a pentester?">
 
   
   <script type="application/ld+json">
@@ -88,26 +90,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Posts",
-    "name": "Security Descriptor, o que é e onde vive.",
-    "headline": "Security Descriptor, o que é e onde vive.",
-    "description": "a description",
+    "name": "Attacking Azure Blob Storage Services",
+    "headline": "Attacking Azure Blob Storage Services",
+    "description": "Who knows what is Azure Blob Storage? And... what I can do with that as a pentester?",
     
     "inLanguage": "en",
-    "url" : "\/\/localhost:1313\/posts\/security-descriptor\/",
+    "url" : "\/\/localhost:1313\/posts\/attacking-azure-blob-storage-services\/",
     "author" : {
       "@type": "Person",
       "name": "oppsec"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-10-24T00:00:00\u002b00:00",
-    "datePublished": "2024-10-24T00:00:00\u002b00:00",
+    "dateCreated": "2024-11-22T00:00:00\u002b00:00",
+    "datePublished": "2024-11-22T00:00:00\u002b00:00",
     
-    "dateModified": "2024-10-24T00:00:00\u002b00:00",
+    "dateModified": "2024-11-22T00:00:00\u002b00:00",
     
-    "keywords": ["windows","ldap"],
+    "keywords": ["azure","pentest","microsoft","windows"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1187"
+    "wordCount": "1303"
   }]
   </script>
 
@@ -464,7 +466,7 @@
   
   
         
-            <div class="w-full h-36 md:h-56 lg:h-72 single_hero_basic nozoom" style="background-image:url(/posts/security-descriptor/featured_hu16032925574848401031.jpg);"></div>
+            <div class="w-full h-36 md:h-56 lg:h-72 single_hero_basic nozoom" style="background-image:url(/posts/attacking-azure-blob-storage-services/featured_hu10237897930631584476.png);"></div>
         
     
   
@@ -500,8 +502,8 @@
   <li class="inline hidden">
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
-      href="/posts/security-descriptor/"
-      >Security Descriptor, o que é e onde vive.</a
+      href="/posts/attacking-azure-blob-storage-services/"
+      >Attacking Azure Blob Storage Services</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -510,7 +512,7 @@
 
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Security Descriptor, o que é e onde vive.
+      Attacking Azure Blob Storage Services
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -557,7 +559,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-10-24T00:00:00&#43;00:00">24 October 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1187 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span><span class="px-2 text-primary-500">&middot;</span>
+  <time datetime="2024-11-22T00:00:00&#43;00:00">22 November 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1303 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span><span class="px-2 text-primary-500">&middot;</span>
 
 
 <script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
@@ -602,18 +604,34 @@
   
   
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/windows/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/azure/&#34;,'_self');">
     <span class="flex" style="cursor: pointer;">
   <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Windows
+    Azure
   </span>
 </span>
   </span>
   
-  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/ldap/&#34;,'_self');">
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/pentest/&#34;,'_self');">
     <span class="flex" style="cursor: pointer;">
   <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
-    Ldap
+    Pentest
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/microsoft/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Microsoft
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/windows/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Windows
   </span>
 </span>
   </span>
@@ -660,146 +678,211 @@
         <div class="article-content max-w-prose mb-20">
           
 
-<h2 class="relative group">O que é? 
-    <div id="o-que-%C3%A9" class="anchor"></div>
+<h2 class="relative group">What is Azure and Blob? 
+    <div id="what-is-azure-and-blob" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#o-que-%C3%A9" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#what-is-azure-and-blob" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>O Security Descriptor ou ntSecurityDescriptor, é um atributo de segurança do Windows que contém uma estrutura de dados representativa das permissões e propriedades daquele objeto em questão. Podemos interpretar o mesmo como uma ideia do escopo de permissões do X sobre Y. O ntSecurityDescriptor está presente desde as versões superiores do Windows Server 2000 e se manteve o mesmo desde então.</p>
-<p>O Security Descriptor é um representação compactada binária da segurança associada a objeto pertecente ao ambiente. Para comprovação disso, podemos tentar extrair o Security Descriptor de um usuário ou grupo por meio de uma query LDAP e vermos seu formato puro.</p>
-<img src="img/image1.jpg">
-<p>É importante salientar que o ntSecurityDescriptor é utilizado por DACLs, SACLs, e ACL. Esses três atributos são responsáveis por representar as permissões desse objeto consumindo os dados do ntSecurityDescriptor. Essas permissões são de quem representa aquele objeto, quem pode acessar esse objeto e o que pode fazer com o mesmo, informações de auditoria do objeto e restrições sobre tal.</p>
+<p>Azure, or Microsoft Azure, is a cloud computing platform maintained by Microsoft that offers a bunch of services used by many companies and individuals. Probably, the most famous solutions provided by Microsoft Azure are virtual machines, Azure Kubernetes Services (AKS), solutions for DevOps and DevSecOps, and of course, the giant integration with all other Microsoft services, for example, Active Directory, GitHub, Azure DevOps, Visual Studio, and GitHub Copilot.</p>
+<p>Now, what is Azure Blob Storage? Azure Blob Storage is a massively scalable and <del>secure</del> object storage solution for cloud-native workloads, archives, data lakes, HPC, and machine learning (I took this from the Microsoft Azure Blob Storage website). Basically, a lot of companies store their files like videos, documents, executables, logs, backup data, and others in this service and share these resources through their services like web apps, systems, etc.</p>
+<p>A Blob Storage is constructed of three types of resources, which are:</p>
 <ul>
-<li><strong>ACL</strong>: <em>Access Control List</em> é uma lista de proteções de seguranças que são aplicadas sobre um objeto. Deve-se entender que objetos podem ser um arquivo, processo, evento, ou tudo aquilo que também tiver um “Security Descriptor”;</li>
-<li><strong>ACE</strong>: <em>Access Control Entries</em> são entrada de dados de ACLs (Access Control List). Uma ACE contém uma lista de permissões sobre um SID que irá identificar se tais permissões participam dos escopos: Allowed, Denied ou Audited;</li>
-<li><strong>DACL</strong>: <em>Discretionary Access Control List</em> é o responsável por identificar os administradores ou objetos que tem permissões ou não sobre objetos protegidos. Caso um processo tente interagir com um objeto protegido, o sistema irá requisitar ao que ACE busque na DACL se aquele autor em questão tem as permissões necessárias;</li>
-<li><strong>SACL</strong>: <em>System Access Control List</em> é uma lista que permite que adminstradores registrem tentativas de interação ou acesso a um objeto protegido. Cada ACE irá especificar as tentativas de acesso sobre aquele item e fará com que o sistema armazene essa tentativa no Security Event Log;</li>
+<li>
+<p><strong>Storage Account</strong>: A Storage Account is the unique namespace for your Azure data. So, if you store your data on Azure Storage, your data will be available at an address that uses this namespace as the reference for access. Example: <code>https://oppsec.blob.core.windows.net</code>.</p>
+</li>
+<li>
+<p><strong>Container</strong>: A container is where all the blobs get stored; they work similarly to a directory in a file system. A good thing is there is no limit to how many blobs can be stored in a container, of course, because the purpose is to provide large storage access. A container name can be between 3 and 63 characters long and doesn&rsquo;t support special characters besides the dash character (-).</p>
+</li>
+<li>
+<p><strong>Blob</strong>: A blob is a binary large object and a storage option for any type of data that you want to store in a binary format. (I took this from Microsoft again)</p>
+</li>
 </ul>
-<img src="img/image2.jpg">
-<p>De acordo com a Microsoft, o ntSecurityDescriptor utiliza de um sistema chamado <em>Security Descriptor String Format</em>. O <em>Security Descriptor String Format</em> é um formato ou sistema de texto responsável por armazenar ou transportar a informação do ntSecurityDescriptor. Isso é feito por duas funções chamadas <strong>ConvertSecurityDescriptorToStringSecurityDescriptorA</strong> e <strong>ConvertStringSecurityDescriptorToSecurityDescriptorA</strong>. Essas duas funções são utilizadas para o trabalho de conversão dos Security Descriptor.</p>
-<p>É possível transformar um <em>“String Security Descriptor</em>“ para um <em>Security Descriptor Absoluto</em> através de outra função que é chamada de <strong>MakeAbsoluteSD</strong>. Essas três funções iram retornar valores não nulos, caso todos os argumentos necessários forem repassados e serem válidos. Com o seu retorno, é possível extrair o formato do Security Descriptor.</p>
-<p>Para que as funções citadas acima possam descrever o formato do Security Descriptor, é utilizado a tecnologia SDDL (Security Descriptor Definition Language) que irá fazer essa tradução e permitir que as funções possam representar elas em texto. Aqui estão alguns exemplos de SDDL retirados do artigo da Microsoft:</p>
+<div align="center">
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://learn.microsoft.com/en-us/azure/storage/blobs/media/storage-blobs-introduction/blob1.png" alt="image" />
+    
+  </figure>
+
+Azure Blob Storage diagram that I stole from Microsoft documentation</p>
+</div>
+<p>Azure Blob Storage is basically Microsoft&rsquo;s version of Amazon S3 Bucket or Google Cloud Drive. The main purpose is to serve access to a large scale of files and provide more flexibility in the storing process.</p>
 
 
-<h3 class="relative group">Exemplos 
-    <div id="exemplos" class="anchor"></div>
+<h2 class="relative group">Why should I know about this? 
+    <div id="why-should-i-know-about-this" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#exemplos" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#why-should-i-know-about-this" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
-<p><strong>Regra</strong>: Qualquer usuário poderá executar esse objeto se ele seguir as seguintes condições:</p>
+</h2>
+<p>Well, we&rsquo;re hackers, or pentesters&hellip; so we should know about a bunch of things. Today, it is extremely easy to find websites that use Microsoft services/technologies like IIS, ASP.NET, and now, Azure services, like Azure Blob Storage. If we understand the environment that we are fighting in, we know how to find vulnerabilities and create a good report for the client. I have already done a lot of pentests on clients that use Azure Blob Storage and discovered interesting info and sensitive data about the web app, infrastructure, or environment I was attacking with this knowledge.</p>
+<p>Now that you understand the importance of knowing what Azure Blob Storage is, we can start talking about the good part: the vulnerabilities that we can find while dealing with this service.</p>
+
+
+<h2 class="relative group">Anonymous Access 
+    <div id="anonymous-access" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#anonymous-access" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The main advantage of Azure Blobs compared to other Azure artifacts like Azure Files (SMB and REST), Azure Queues, and Azure Tables is that Azure Blobs allow anonymous public read access, as we can see in the image below:
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/ElQDvps.png" alt="image" />
+    
+  </figure>
+</p>
+<p>With anonymous access and the right request, we can enumerate all the blobs (files) inside the target Azure Blob Storage and find really good information. As we said before, the base URL for an Azure Blob Storage is <code>STORAGE_ACCOUNT_NAME.blob.core.windows.net</code>, so you need to first discover the Storage Account name. It can be easily discovered if the web app makes a direct request for the file it needs. For example:
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/UrbtCoD.png" alt="image" />
+    
+  </figure>
+</p>
+<p>In the image above, before the first dot is the storage account name. If you can&rsquo;t find the storage account this way, I recommend trying three things:</p>
 <ol>
-<li>O título dele ser PM</li>
-<li>A divisão ou setor dele for Financeiro ou Vendas</li>
+<li>
+<p>Google Dorking
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/L0qLKUk.png" alt="image" />
+    
+  </figure>
+</p>
+</li>
+<li>
+<p>Use the company&rsquo;s name
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/T8rna5v.png" alt="image" />
+    
+  </figure>
+</p>
+</li>
+<li>
+<p>Bruteforce with a custom wordlist
+Try using FFUF with a custom wordlist that combines the company name and a generic storage name, like <code>amazoncontent</code>, <code>amazonstorage</code>, <code>amazonfiles</code>.</p>
+</li>
 </ol>
-<pre tabindex="0"><code>d:(XA; ;FX;;;S-1-1-0; (@User.Title==&#34;PM&#34; &amp;&amp; (@User.Division==&#34;Financeiro&#34; || @User.Division ==&#34;Vendas&#34;)))
-</code></pre><p><strong>Regra 2</strong>: Permite leitura do objeto se o usuário seguir as seguintes condições:</p>
-<ol>
-<li>Seu login ter sido feito a partir de um Smart Card</li>
-<li>É pertencente do grupo Backup Operator</li>
-<li>Está conectado em uma máquina com o BitLocker ativo</li>
-</ol>
-<pre tabindex="0"><code>D:(XA; ;FR;;;S-1-1-0; (Member_of {SID(Smartcard_SID), SID(BO)} &amp;&amp;@Device.Bitlocker))
+<p>If you can find a valid Azure Blob Storage domain, you&rsquo;re probably going to find a page similar to this:
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/Xt89ltu.png" alt="image" />
+    
+  </figure>
+</p>
+<p>As we can see in the image above, the service is asking for the parameter &ldquo;comp&rdquo;. If we look at Microsoft&rsquo;s documentation, it says we can enumerate container names using <code>?comp=list</code>, but this never worked for me. In an ideal world, like the first image I showed you, the container name will be in the URL. Example: <code>https://oppsec.blob.core.windows.net/static/js/jquery.js</code> — <strong>static</strong> is the container name. Again, you can use FFUF to enumerate container names. As you can see, the container name is <strong>static</strong>, a common word.</p>
+<p>The main problem here is Azure Blob Storage does not indicate if the container name is valid or not, i.e. <strong>static</strong> can be a valid container name and <strong>notnotnotvalid</strong> invalid but we will get the same response for both:</p>
+<pre tabindex="0"><code>&lt;Error&gt;
+&lt;Code&gt;ResourceNotFound&lt;/Code&gt;
+&lt;Message&gt;
+The specified resource does not exist. RequestId:4f8c64bf-701e-0024-4099-3cb3d7000000 Time:2024-11-22T04:47:01.2790826Z
+&lt;/Message&gt;
+&lt;/Error&gt;
 </code></pre>
 
-<h2 class="relative group">Qual a sua importância? 
-    <div id="qual-a-sua-import%C3%A2ncia" class="anchor"></div>
+<h2 class="relative group">Accessing blobs from a container 
+    <div id="accessing-blobs-from-a-container" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#qual-a-sua-import%C3%A2ncia" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#accessing-blobs-from-a-container" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>Através do Security Descriptor, pode-se compreender qual o escopo de privilégios que aquele ativo terá sobre um item de seu interesse ou que haverá uma possível interação. Com isso em mente, a Microsoft desenvolveu esse atributo expressivo para que fosse alocado sobre os objetos do ambiente Active Directory e pudesse trabalhar as questões de controle de acesso. Atualmente, ele é utilizado por outras classes do ambiente Active Directory como:</p>
+<p>But Microsoft is not an evil company, and there is a way to identify if the container name is valid or not. We need to append <code>?restype=container&amp;comp=list</code> or just <code>?comp=list</code> to the end of the URL, and blobs will be listed.
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/A0mA4oq.png" alt="image" />
+    
+  </figure>
+</p>
+<p>With this in mind, we can go back to FFUF and enumerate valid container names through this command:</p>
+<pre tabindex="0"><code>ffuf -c -w /opt/SecLists/Discovery/Web-Content/common.txt --fc 404 --mc all -u https://oppsec.blob.core.windows.net/FUZZ?comp=list
+ffuf -c -w /opt/SecLists/Discovery/Web-Content/common.txt --fc 404 --mc all -u https://oppsec.blob.core.windows.net/FUZZ?restype=container&amp;comp=list
+</code></pre><p>Of course, you can use the tool of your choice, but I really like FFUF and have been using it for the last few years.</p>
+<p>Now you can list the blobs. You just need to access the URL indicated by the Name or Url values. For example, if I want to access the .less file from the image I used above, the URL would be something like this: <code>https://oppsec.blob.core.windows.net/static/backend/REDACTED/css/REDACTED.less</code>
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/tRBTfx0.png" alt="image" />
+    
+  </figure>
+</p>
+<p>I used this file as an example, but you can find internal documents by searching for files that end with <code>pdf</code>, <code>csv</code>, <code>xlsx</code>, <code>xls</code>, <code>docx</code>, or low-hanging fruits with <code>js</code>, <code>zip</code>, <code>sql</code> files. Or just adapt the search based on the environment you&rsquo;re exploring. If the web app is developed with PHP, you can search for <code>php</code>, <code>inc</code>, <code>bkp</code>.</p>
+<p>Another problem is Azure Blob Storage is used to store a large scale of files. If you want to find files that end with pdf, you will need to use CTRL+F on your browser and filter one by one. If that wasn&rsquo;t enough, you may come across errors like <code>FeatureVersionMismatch</code> and will need to specify the <code>x-ms-version</code> header with the vlaue <code>2020-04-08</code>.</p>
+<p>I&rsquo;m a person that likes to develop tools/scripts and bring more convenience to my life. So, I developed a tool to help with Azure Blob Storage. I called it Blobber, and it is developed with Python <del>and ChatGPT&rsquo;s help</del>.</p>
+
+
+<h2 class="relative group">Blobber 
+    <div id="blobber" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#blobber" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Blobber automates the process of adding <code>?restype=container&amp;comp=list</code> to the URL, checks for errors, tries to bypass them, and lets you view only the really important data and filter by extensions with more convenience. You can skip the filter by extensions flag too, but be careful because a lot of content will be printed (probably).</p>
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/7ttyKVW.png" alt="image" />
+    
+  </figure>
+
+
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://i.imgur.com/ARLdwmx.png" alt="image" />
+    
+  </figure>
+</p>
+<p>I will not release Blobber for now because I want to do more tests and not release a tool that does not work as expected. However, it will eventually be available on my GitHub. The repo will be accessible through this URL <a href="https://github.com/oppsec/blobber" target="_blank">https://github.com/oppsec/blobber</a>.</p>
+
+
+<h2 class="relative group">Conclusion 
+    <div id="conclusion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Today we learned a bit more about the Azure Blob Storage service and how valuable it is to find one with anonymous access enabled. I really enjoyed reading about this through Microsoft&rsquo;s documentation and developing this script (Blobber). In my opinion, this is the best way to learn something new and improve your skills. I hope all you guys liked this post and learned something new. I hope to see you again soon.</p>
+
+
+<h2 class="relative group">References 
+    <div id="references" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
 <ul>
-<li>samDomainBase: A classe base para a definição de domínios;</li>
-<li>securityPrincipal: Armazena informações de segura sobre um objeto;</li>
-<li>top: A classe de mais alto nível que é de onde todas as classes derivam;</li>
-</ul>
-<p>Hoje em dia, ferramentas como o <strong>BloodHound</strong> usufruem de ACEs e DACLs para identificar as permissões que um objeto tem sobre o outro, e assim, poder construir caminhos de exploração por meio de fragilidades do objeto X sobre o objeto Y.</p>
-
-
-<h2 class="relative group">Trabalhando com o ntSecurityDescriptor 
-    <div id="trabalhando-com-o-ntsecuritydescriptor" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#trabalhando-com-o-ntsecuritydescriptor" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>O ntSecurityDescriptor segue o seguinte formato <code>O:BAG:BAD:S:</code>, onde:</p>
-<ul>
-<li>O: Owner</li>
-<li>BAG e BAD serão utilizados para representar quem tem permissão de interação e quem não tem sobre aquele objeto. G é Granted e D é Deny.</li>
-<li>S representará o SACL.</li>
-</ul>
-<p>O atributo Owner irá indicar o proprietário por meio do SID do objeto, o BAG e o BAD são especificadores de controle de acesso e o SACL para poder armazenar as tentativas de interação com o objeto alvo. De uma maneira simples, se expandíssemos um Security Descriptor, esse seria o formato dele:</p>
-<img src="img/image3.jpg">
-<p>Como podemos ver, o Owner e PrimaryGroup são as representações do proprietário daquele Security Descriptor. Com isso, podemos partir para a leitura da DACL que trará informações sobre a ACE do objeto protegido. Em um contexto de segurança ofensiva, o que diretamente nos importa seria o Access Mask dessa ACE.</p>
-<p>Com isso em mente, podemos capturar o Security Descriptor de objetos (usuários, grupos, etc) e lermos suas permissões e identificar possíveis fragilidades que atacantes podem utilizar para escalonar privilégios dentro de um ambiente Active Directory. Para isso, incrementei um módulo na minha ferramenta <a href="https://github.com/oppsec/breads" target="_blank">breads</a> que irá buscar pelo valor do ntSecurityDescriptor de todos os objetos do ambiente através da query <code>objectClass=(*)</code> e checar as permissões se baseando no valor de ACE_MASK. Esses valores são hexadecimais que quando calculados, podem ser lidos como bits representantes de permissão. Essa é a tabela de permissões:</p>
-<img src="img/image4.jpg">
-<p>Esse é o pedaço do código da minha ferramenta que irá realizar essa busca. O <code>object_ntsd</code> representa o acesso ao atributo ntSecurityDescriptor daquele objeto; já a variável <code>sd</code> está utilizando de uma classe do projeto <a href="https://github.com/fortra/impacket" target="_blank">Impacket</a> para realizar a leitura dos bytes do Security Descriptor. Por fim, percorremos pelas chaves retornada da variável <code>sd</code> e acessamos seus valores respectivamente.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># ...</span>
-</span></span><span class="line"><span class="cl"><span class="n">object_ntsd</span> <span class="o">=</span> <span class="n">attribute</span><span class="p">[</span><span class="s2">&#34;attributes&#34;</span><span class="p">][</span><span class="s2">&#34;nTSecurityDescriptor&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">sd</span> <span class="o">=</span> <span class="n">SR_SECURITY_DESCRIPTOR</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">object_ntsd</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">sd</span><span class="p">[</span><span class="s2">&#34;Dacl&#34;</span><span class="p">]:</span>
-</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">ace</span> <span class="ow">in</span> <span class="n">sd</span><span class="p">[</span><span class="s2">&#34;Dacl&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">aces</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">		<span class="n">ace_object</span> <span class="o">=</span> <span class="n">ace</span><span class="p">[</span><span class="s2">&#34;Ace&#34;</span><span class="p">]</span>  <span class="c1"># Ace_Object Vars: Mask, Sid</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ace_mask</span> <span class="o">=</span> <span class="n">ace_object</span><span class="p">[</span><span class="s2">&#34;Mask&#34;</span><span class="p">][</span><span class="s2">&#34;Mask&#34;</span><span class="p">]</span>
-</span></span></code></pre></div><p>Após um tratamento sobre os hexadecimais retornados e quais são suas representações com base na documentação da Microsoft, podemos esperar um resultado como esse abaixo. Ressalto que foi utilizado uma conta participante do grupo de Domain Admins.</p>
-<img src="img/image5.jpg">
-
-
-<h2 class="relative group">Conclusão 
-    <div id="conclus%C3%A3o" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#conclus%C3%A3o" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Assim, podemos compreender a relevância do ntSecurityDescriptor no Active Directory e como podemos utilizar dele para encontrar meios para realizar uma escalação de privilégios por meio de objetos presentes no ambiente.  Como citado anteriormente, a ferramenta BloodHound faz um ótimo trabalhando usufruindo desse atributo para construir caminhos e gráficos com base nas informações coletadas do ambiente. Entende-se que tudo isso é principalmente útil para atacantes, todavia, esse tipo de processo também é de grande utilidade também para os times de operações defensivas, visto que poderão encontrar fragilidades na arquitetura monitorada.</p>
-
-
-<h2 class="relative group">Referências 
-    <div id="refer%C3%AAncias" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#refer%C3%AAncias" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/adschema/a-ntsecuritydescriptor" target="_blank">https://learn.microsoft.com/en-us/windows/win32/adschema/a-ntsecuritydescriptor</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/adschema/c-samdomainbase" target="_blank">https://learn.microsoft.com/en-us/windows/win32/adschema/c-samdomainbase</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/adschema/c-top" target="_blank">https://learn.microsoft.com/en-us/windows/win32/adschema/c-top</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/secauthz/security-descriptor-string-format?redirectedfrom=MSDN" target="_blank">https://learn.microsoft.com/en-us/windows/win32/secauthz/security-descriptor-string-format?redirectedfrom=MSDN</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/secgloss/a-gly" target="_blank">https://learn.microsoft.com/en-us/windows/win32/secgloss/a-gly</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/secgloss/d-gly" target="_blank">https://learn.microsoft.com/en-us/windows/win32/secgloss/d-gly</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists" target="_blank">https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists</a></li>
-<li><a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/4f4251cc-23b6-44b6-93ba-69688422cb06" target="_blank">https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/4f4251cc-23b6-44b6-93ba-69688422cb06</a></li>
-<li><a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/7d4dac05-9cef-4563-a058-f108abecce1d" target="_blank">https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-dtyp/7d4dac05-9cef-4563-a058-f108abecce1d</a></li>
-<li><a href="https://github.com/fortra/impacket/blob/f8899e65f16c50b871863528d419cfb701a5a3e3/impacket/ldap/ldaptypes.py" target="_blank">https://github.com/fortra/impacket/blob/f8899e65f16c50b871863528d419cfb701a5a3e3/impacket/ldap/ldaptypes.py</a></li>
-<li><a href="https://learn.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_rights_enum" target="_blank">https://learn.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_rights_enum</a></li>
-<li><a href="https://www.installsetupconfig.com/win32programming/accesscontrollistacl2_1.html" target="_blank">https://www.installsetupconfig.com/win32programming/accesscontrollistacl2_1.html</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/storage/blobs/" target="_blank">https://learn.microsoft.com/en-us/azure/storage/blobs/</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview" target="_blank">https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview</a></li>
+<li><a href="https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api" target="_blank">https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api</a></li>
+<li><a href="https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-concepts" target="_blank">https://learn.microsoft.com/en-us/rest/api/storageservices/blob-service-concepts</a></li>
+<li><a href="https://learn.microsoft.com/en-us/rest/api/storageservices/enumerating-blob-resources" target="_blank">https://learn.microsoft.com/en-us/rest/api/storageservices/enumerating-blob-resources</a></li>
+<li><a href="https://learn.microsoft.com/en-us/rest/api/storageservices/operations-on-containers" target="_blank">https://learn.microsoft.com/en-us/rest/api/storageservices/operations-on-containers</a></li>
 </ul>
 
           
@@ -823,8 +906,8 @@
           
         
       <script>
-        var oid = "views_posts\/security-descriptor\/index.md"
-        var oid_likes = "likes_posts\/security-descriptor\/index.md"
+        var oid = "views_posts\/attacking-azure-blob-storage-services\/index.md"
+        var oid_likes = "likes_posts\/attacking-azure-blob-storage-services\/index.md"
       </script>
       
       
@@ -844,30 +927,30 @@
       <div class="flex justify-between pt-3">
         <span>
           
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/attacking-azure-blob-storage-services/">
+            <a class="flex group mr-3" href="/posts/security-descriptor/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Attacking Azure Blob Storage Services</span
+                  >Security Descriptor, o que é e onde vive.</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-11-22T00:00:00&#43;00:00">22 November 2024</time>
+                    <time datetime="2024-10-24T00:00:00&#43;00:00">24 October 2024</time>
                   
                 </span>
               </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
             </a>
+          
+        </span>
+        <span>
           
         </span>
       </div>

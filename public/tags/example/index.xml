@@ -6,16 +6,16 @@
     <description>Recent content in Example on 1337.coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    
-    <lastBuildDate>Thu, 24 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/example/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2024 oppsec</copyright>
+    <lastBuildDate>Fri, 22 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/tags/example/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>security-descriptor-what-is-and-what-does-it-eat</title>
-      <link>//localhost:1313/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/</link>
-      <pubDate>Thu, 24 Oct 2024 00:00:00 +0000</pubDate>
+      <title>Attacking Azure Blob Storage Services</title>
+      <link>//localhost:1313/posts/1732247842871-attacking-azure-blob-storage-services/</link>
+      <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/</guid>
+      <guid>//localhost:1313/posts/1732247842871-attacking-azure-blob-storage-services/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/posts/1732247842871-attacking-azure-blob-storage-services/featured.png" />
     </item>
     
   </channel>
