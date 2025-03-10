@@ -2,8 +2,8 @@
 title: "Security Descriptor, o que é e onde vive."
 date: 2024-10-24
 draft: false
-description: "a description"
-tags: ["windows", "ldap"]
+description: "A blog post to understand a bit more of the Security Descriptor feature"
+tags: ["windows", "ldap", "active directory"]
 ---
 
 ## O que é?

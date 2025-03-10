@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Active Directory on 1337.coffee</title>
-    <link>//localhost:52570/tags/active-directory/</link>
+    <link>http://localhost:1313/tags/active-directory/</link>
     <description>Recent content in Active Directory on 1337.coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    
-    <lastBuildDate>Thu, 24 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:52570/tags/active-directory/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 oppsec</copyright>
+    <lastBuildDate>Thu, 24 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/active-directory/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Security Descriptor, o que é? O que come?</title>
-      <link>//localhost:52570/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/</link>
+      <title>Security Descriptor, o que é e onde vive.</title>
+      <link>http://localhost:1313/posts/security-descriptor/</link>
       <pubDate>Thu, 24 Oct 2024 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:52570/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/</guid>
+      <guid>http://localhost:1313/posts/security-descriptor/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:52570/posts/1729804117191-security-descriptor-what-is-and-what-does-it-eat/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/security-descriptor/featured.jpg" />
     </item>
     
   </channel>

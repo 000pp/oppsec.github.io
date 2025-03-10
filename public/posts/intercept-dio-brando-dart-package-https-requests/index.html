@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="dark"
+  data-auto-appearance="true"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Intercepting Dio (Brando) Dart package HTTPS requests &middot; 1337.coffee</title>
+  <meta name="title" content="Intercepting Dio (Brando) Dart package HTTPS requests &middot; 1337.coffee" />
+  
+  <meta name="description" content="Learning how to use Frida and other tools to interact with mobile apps." />
+  <meta name="keywords" content="research, mobile, reverse engineering, flutter, " />
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.67eb0befb1fb57e6528684f3a2ff6e0606a82100504705b66488d54a9f3fda9c2605c9bf3b70163208427288637a7b4d1a168384c1115e417458eae6b44b329c.css"
+    integrity="sha512-Z&#43;sL77H7V&#43;ZShoTzov9uBgaoIQBQRwW2ZIjVSp8/2pwmBcm/O3AWMghCcohjentNGhaDhMERXkF0WOrmtEsynA==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.8bd8abd95ed55875dcc9134eb78d319c9b6bcb23ec5cbbec3ba4cdd75ee9ea85a1cc7bcae884e69383653473778131fa88d33d4d491cdef4664fb6a014ccb351.js"
+    integrity="sha512-i9ir2V7VWHXcyRNOt40xnJtryyPsXLvsO6TN117p6oWhzHvK6ITmk4NlNHN3gTH6iNM9TUkc3vRmT7agFMyzUQ==" data-copy="" data-copied=""></script>
+  
+  
+  
+  <script src="/lib/zoom/zoom.min.37d2094687372da3f7343a221a470f6b8806f7891aa46a5a03966af7f0ebd38b9fe536cb154e6ad28f006d184b294525a7c4054b6bbb4be62d8b453b42db99bd.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S&#43;Yti0U7QtuZvQ=="></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/">
+  <meta property="og:site_name" content="1337.coffee">
+  <meta property="og:title" content="Intercepting Dio (Brando) Dart package HTTPS requests">
+  <meta property="og:description" content="Learning how to use Frida and other tools to interact with mobile apps.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-20T00:00:00+00:00">
+    <meta property="article:tag" content="Research">
+    <meta property="article:tag" content="Mobile">
+    <meta property="article:tag" content="Reverse Engineering">
+    <meta property="article:tag" content="Flutter">
+    <meta property="og:image" content="http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/featured.png">
+  <meta name="twitter:title" content="Intercepting Dio (Brando) Dart package HTTPS requests">
+  <meta name="twitter:description" content="Learning how to use Frida and other tools to interact with mobile apps.">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Intercepting Dio (Brando) Dart package HTTPS requests",
+    "headline": "Intercepting Dio (Brando) Dart package HTTPS requests",
+    "description": "Learning how to use Frida and other tools to interact with mobile apps.",
+    
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/intercept-dio-brando-dart-package-https-requests\/",
+    "author" : {
+      "@type": "Person",
+      "name": "oppsec"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-02-20T00:00:00\u002b00:00",
+    "datePublished": "2025-02-20T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-02-20T00:00:00\u002b00:00",
+    
+    "keywords": ["research","mobile","reverse engineering","flutter"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2695"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="oppsec" />
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">1337.coffee</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="1337.coffee">
+        home
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="Posts">
+        posts
+    </p>
+</a>
+
+
+
+            
+            
+  <a href="https://x.com/opps3c"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <span  class="mr-1" >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+
+    </span>
+    
+    <p class="text-base font-medium" title="">
+        x
+    </p>
+</a>
+
+
+
+            
+            
+  <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-base font-medium" title="">
+        
+    </p>
+</a>
+
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 flex items-center">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+                    <div class="flex items-center justify-center dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12 h-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" class="text-base hover:text-primary-600 dark:hover:text-primary-400" style="margin-right:5px">
+                <div class="flex items-center justify-center dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" class="block">
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li id="menu-close-button">
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="1337.coffee">
+            home
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="Posts">
+            posts
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="https://x.com/opps3c"  target="_blank"  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <div  class="mr-2" >
+            
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+
+        </div>
+        
+        <p class="text-bg font-bg" title="">
+            x
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href=""  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+        
+        <p class="text-bg font-bg" title="">
+            
+        </p>
+    </a>
+</li>
+
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+        
+            <div class="w-full h-36 md:h-56 lg:h-72 single_hero_basic nozoom" style="background-image:url(/posts/intercept-dio-brando-dart-package-https-requests/featured_hu_9bde90fbdeb8cd6f.png);"></div>
+        
+    
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/"
+      >1337.coffee</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline ">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/"
+      >Posts</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline hidden">
+    <a
+      class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
+      href="/posts/intercept-dio-brando-dart-package-https-requests/"
+      >Intercepting Dio (Brando) Dart package HTTPS requests</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Intercepting Dio (Brando) Dart package HTTPS requests
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2025-02-20T00:00:00&#43;00:00">20 February 2025</time><span class="px-2 text-primary-500">&middot;</span><span>2695 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">13 mins</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+<script type="text/javascript" src="/js/zen-mode.min.63c8a202661f4a2063fdc2706685d668e8ea3da613da2224e9da527e5876e4f53dcac39ab60732626fb4151feae5d430d0cf44731e5d3c726522fcc1519c1547.js" integrity="sha512-Y8iiAmYfSiBj/cJwZoXWaOjqPaYT2iIk6dpSflh25PU9ysOatgcyYm&#43;0FR/q5dQw0M9Ecx5dPHJlIvzBUZwVRw=="></script>
+
+<span class="mb-[2px]">
+    <span id="zen-mode-button"
+          class="text-lg hover:text-primary-500"
+          title="Enable zen mode"
+          data-title-i18n-disable="Enable zen mode"
+          data-title-i18n-enable="Disable zen mode">
+        <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg>
+  </span>
+
+</span>
+    </span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/research/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Research
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/mobile/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Mobile
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/reverse-engineering/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Reverse Engineering
+  </span>
+</span>
+  </span>
+  
+  <span style="margin-top:0.5rem" class="mr-2" onclick="window.open(&#34;/tags/flutter/&#34;,'_self');">
+    <span class="flex" style="cursor: pointer;">
+  <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+    Flutter
+  </span>
+</span>
+  </span>
+  
+  
+  
+  
+</div>
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+
+    
+      
+      
+
+      
+
+      
+
+    
+
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+    
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+
+<h2 class="relative group">Summary 
+    <div id="summary" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#summary" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>Introduction</li>
+<li>Less talk, show me the code!</li>
+<li>SSL Pinning for you, not for me!</li>
+<li>Intercept, intercept and intercept</li>
+<li>References</li>
+</ol>
+<br>
+
+
+<h3 class="relative group">Introduction 
+    <div id="introduction" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Continuing with my mobile pentest studies—and, of course, doing mobile pentests at work—it&rsquo;s pretty common to run into different mobile apps built with various programming languages. For example, you’ll find apps developed in Java, Kotlin, Flutter, Xamarin, Swift… and a bunch of others.</p>
+<p>So far, I’ve only worked with Java and Flutter apps, but I’m looking forward to exploring others. What am I getting at here? Basically, what&rsquo;s the difference between decompiling a Java app and a Flutter app? Simple: you can&rsquo;t just open Flutter apps in JADX and call it a day :(</p>
+<p>You&rsquo;ll probably find only a few class files that won’t be nearly as helpful as you&rsquo;d hope. For example, here’s the app I’m currently wrestling with:</p>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/intercept-dio-brando-dart-package-https-requests/img/image_hu_867ae41d53ed585a.png 330w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/image_hu_30ee48f78e436da9.png 660w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/image_hu_ac518edf3e5f5d5b.png 1024w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/image_hu_2e8fbe72d19778e4.png 2x"
+        src="/posts/intercept-dio-brando-dart-package-https-requests/img/image_hu_30ee48f78e436da9.png"
+        alt="image"
+      />
+      
+    </figure>
+</p>
+<p>As you can see, we only have a <code>MainActivity</code> file, a class file with a random name, and the <code>BuildConfig</code> file (don’t forget to check the BuildConfig file—you might find something useful there). When I see this, two scenarios come to mind:</p>
+<ol>
+<li>The rest of the app is obfuscated.</li>
+<li>The app is built with Flutter.</li>
+</ol>
+<p>I went with the second option. Why? Because it&rsquo;s pretty easy to identify a Flutter app just by looking at the extracted content from the APK file (I used apktool for this) and checking the lib directory.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%201.png" alt="image" />
+      
+    </figure>
+</p>
+<p>For now, we&rsquo;re most interested in these two files: <code>libflutter.so</code> and <code>libapp.so</code>. For those who don’t know, Flutter is a software development kit created by Google, commonly used to develop applications for Android, iOS, Linux, macOS, and other platforms. However, it’s primarily popular for mobile apps.</p>
+<p>The <code>libflutter.so</code> file contains the Flutter engine, mainly developed in C++. One of its key components is Skia (a 2D graphics library), which renders the UI and displays it in the <code>FlutterView</code>, also known as the <em>Raster Thread</em>. There’s also the <em>Platform Thread</em>, which interacts with the native APIs of Android and iOS. Finally, we have the <em>UI Thread</em>, responsible for executing Dart code and managing widgets.</p>
+<p>On the other hand, <code>libapp.so</code> is unique to each Flutter application. It contains the compiled Dart project—essentially, the mobile app’s source code. This code is compiled into native machine code using AOT (Ahead-of-Time) compilation, meaning the code is translated into machine instructions before the app actually runs, typically during the production build.</p>
+<p>As stated in the Dart documentation, AOT-compiled code guarantees better performance during application execution, such as a fast startup and consistent runtime performance, unlike JIT-compiled code, which is slower at startup but can reach better performance after some time when necessary runtime optimizations occur. Naturally, during a fast development cycle, the Dart VM offers developers JIT compilation features like hot reload, live metrics collection, and debugging support, which help a lot in thoroughly testing the application.</p>
+<p>
+  <figure>
+    <img class="my-0 rounded-md" loading="lazy" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*oVVba1QhXL1hUBKE9sfenw.png" alt="image" />
+    
+  </figure>
+</p>
+<blockquote>
+<p><a href="https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30" target="_blank">https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30</a></p></blockquote>
+<p>When apps are finally ready to be deployed to web applications or app stores, you can compile your application with the Dart AOT compiler to native ARM or x64 machine code, which, as discussed earlier, will offer better startup performance for your entire application. The AOT-compiled code will run inside the Dart runtime environment with a memory management system that employs fast garbage collection and a generational garbage collector.</p>
+<p>In the final process, the <code>libflutter.so</code> file launches the Flutter engine and sets up the environment, while the <code>libapp.so</code> file is loaded by the Flutter engine. This allows the Dart code to run within the Flutter engine, powered by <code>libflutter.so</code>.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%202.png" alt="image" />
+      
+    </figure>
+</p>
+<blockquote>
+<p>Flutter Architectural Overview - Flutter</p></blockquote>
+<br>
+
+
+<h3 class="relative group">Less talk, show me the code! 
+    <div id="less-talk-show-me-the-code" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#less-talk-show-me-the-code" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>To provide more context, if we open a generic Java application in decompilation tools like <a href="https://github.com/skylot/jadx" target="_blank">JADX</a> and the app does not use any obfuscation solution, the reverse-engineering process becomes extremely easy since the code is human-readable. For example, I downloaded a specific application from the Play Store and decompiled the APK file using JADX. By following the package name in the Source Code tab and accessing the Java files, you can see that everything is much easier to understand.</p>
+<p>
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        srcset="
+        /posts/intercept-dio-brando-dart-package-https-requests/img/java-code-example_hu_214ee31f24f8f623.png 330w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/java-code-example_hu_93d9cfcf9c0f0235.png 660w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/java-code-example_hu_72d3afe33d2d65c6.png 1024w,
+        /posts/intercept-dio-brando-dart-package-https-requests/img/java-code-example_hu_d781ffcd37dd4d9f.png 2x"
+        src="/posts/intercept-dio-brando-dart-package-https-requests/img/java-code-example_hu_93d9cfcf9c0f0235.png"
+        alt="image"
+      />
+      
+    </figure>
+</p>
+<p>Getting Flutter&rsquo;s apps source code isn’t exactly trivial. You could open the <code>libapp.so</code> file in Ghidra, IDA, BinaryNinja, or whatever tool you prefer, and try your best to figure out what&rsquo;s going on. But honestly, I prefer a different approach. It’s not a secret method, just a more efficient one (at least in my opinion).</p>
+<p>Thankfully, <a href="https://github.com/worawit" target="_blank">Worawit</a>, along with six other contributors, created the <a href="https://github.com/worawit/blutter" target="_blank">Blutter</a> project. Blutter is a Flutter reverse-engineering tool that supports arm64 and allows lazy people like us to extract more readable code and structure from a Flutter app. It’s super simple to use, though you&rsquo;ll need some libraries and dependencies set up. In my case (MacOS), I had to install <code>cmake</code>, <code>ninja</code>, <code>pkg-config</code>, <code>icu4c</code>, <code>llvm</code>, and a few others. BUT! For actually running Blutter, all you need is a Python script.</p>
+<p>As the Blutter README explains, you just need to run the Python script, specify the path to the <code>arm64-v8a</code> directory, and set an output directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">python3</span> <span class="nt">blutter</span><span class="p">.</span><span class="nc">py</span> <span class="nt">path</span><span class="o">/</span><span class="nt">to</span><span class="o">/</span><span class="nt">app</span><span class="o">/</span><span class="nt">lib</span><span class="o">/</span><span class="nt">arm64-v8a</span> <span class="nt">out_dir</span>
+</span></span></code></pre></div><p>After that, Blutter compiles the necessary libraries and extracts some resources to execute the reverse-engineering process. Hopefully, after a few minutes, your output will look similar to mine. If any errors occur during this process or your PC crashes, make sure to read the stack trace carefully and check the Blutter GitHub repository&rsquo;s Issues tab for similar problems. For added context, I&rsquo;m running this on a MacBook, I haven&rsquo;t tried Blutter on any other OS yet.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%203.png" alt="image" />
+      
+    </figure>
+</p>
+<p>If we navigate to our previously created output directory (in this case, I named it <strong>decompiled_code</strong>) and access the files, we now see a bunch of directories. It contains all the libraries used by the app and the app itself. If you look further, you can find your targeted directory based on the application package name.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%205.png" alt="image" />
+      
+    </figure>
+</p>
+<p>The blurred directories are our target. From here, you can either dig through the countless files Blutter extracted or, like me, open the directory in VSCode for a more user-friendly overview. You&rsquo;re probably going to see a structure similar to the image below. Now it&rsquo;s 10 times easier to understand the application architecture and focus on the most important parts of the code.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%206.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Now we have a much better environment for reverse engineering the mobile application and searching for vulnerabilities. I highly recommend using <a href="https://github.com/gitleaks/gitleaks" target="_blank">gitleaks</a> or any secret-finding tool (TruffleHog, Semgrep) to identify low-hanging fruits. I did this and found some interesting results, but that&rsquo;s not the focus of this article, so we will skip that part.</p>
+<br>
+
+
+<h3 class="relative group">SSL Pinning for you, not for me! 
+    <div id="ssl-pinning-for-you-not-for-me" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#ssl-pinning-for-you-not-for-me" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>SSL Pinning</strong> (or <strong>Certificate Pinning</strong>) is a technique that helps developers secure their mobile apps from Man-in-the-Middle (MITM) attacks. It ensures that the app only trusts specific certificates instead of the entire certificate chain. Instead of trusting any valid certificate chain, the application stores a copy of the server&rsquo;s certificate or public key and verifies if the connection uses that exact certificate.</p>
+<p>In the context of SSL Pinning, there are different pinning approaches. For example, we have <strong>Public Key Pinning</strong>, which is a mechanism for sites to specify which certificate authorities have issued valid certificates for that specific site, and to reject TLS connections to those sites if the used certificate is not issued by a known-good CA. The idea is also to prevent man-in-the-middle attacks by hard-coding the public key of the server&rsquo;s SSL certificate instead of the entire certificate. In this way, the client will check if the server certificate contains the same public key that is hard-coded in the application code. The main advantage of Public Key Pinning is that even if the server certificate changes, the client will still trust the server if the public key remains the same, although it is harder to implement.</p>
+<p>Another method is <strong>SPKI Pinning</strong>. The Subject Public Key Info (SPKI) is basically the key with a bit more salt, it can include the algorithm used for encoding or other parameters. SPKI is obtained from the <strong>Certificate Signing Request (CSR)</strong>, which collects the necessary information from a pair of public and private keys. The use of SPKI Pinning is not very convenient because you will need to release a mandatory update of your app when the certificate gets renewed, which will probably make things harder to maintain. It is possible to &ldquo;bypass&rdquo; this problem if you keep the same Certificate Signing Request (CSR) on every renewal process, but that violates the key rotation principle, which is the process of replacing old encryption keys with new ones to reduce the risk of compromised keys.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%208.png" alt="image" />
+      
+    </figure>
+</p>
+<p>While analyzing the source code extracted by Blutter, I found something interesting that caught my attention. In the project files, there was a file called <code>dio_http_service_imp.dart</code>. <a href="https://pub.dev/packages/dio" target="_blank">Dio</a> is a popular HTTP networking package for Dart/Flutter, supporting TLS connections. From the official Dio documentation, this is the basic implementation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">void</span> <span class="nx">initAdapter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nb">String</span> <span class="nx">fingerprint</span> <span class="o">=</span> <span class="s1">&#39;ee5ce1dfa7a53657c545c62b65802e4272878dabd65c0aadcf85783ebb0b4d5c&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dio</span><span class="p">.</span><span class="nx">httpClientAdapter</span> <span class="o">=</span> <span class="nx">IOHttpClientAdapter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">createHttpClient</span><span class="o">:</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">final</span> <span class="nx">HttpClient</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">HttpClient</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span> <span class="nx">SecurityContext</span><span class="p">(</span><span class="nx">withTrustedRoots</span><span class="o">:</span> <span class="kc">false</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">client</span><span class="p">.</span><span class="nx">badCertificateCallback</span> <span class="o">=</span> <span class="p">(</span><span class="nx">cert</span><span class="p">,</span> <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">validateCertificate</span><span class="o">:</span> <span class="p">(</span><span class="nx">cert</span><span class="p">,</span> <span class="nx">host</span><span class="p">,</span> <span class="nx">port</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">cert</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">fingerprint</span> <span class="o">==</span> <span class="nx">sha256</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">cert</span><span class="p">.</span><span class="nx">der</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>As we can see above, we start by defining a variable called <strong>fingerprint</strong> that will contain the SHA256 hash of the public certificate key. After that, we create the HttpClient, ensuring that the SecurityContext is set with <strong>withTrustedRoots</strong> set to false so that we don&rsquo;t trust any certificate just because its root cert is trusted. Furthermore, we check if the certificate fingerprint matches the SHA256 hash and ensure that at least one certificate is being supplied.</p>
+<p>It works perfectly for servers that have a self-signed certificate, however, it will not work for external certificates issued by AWS, Let&rsquo;s Encrypt, or other third parties. Therefore, we can verify the root of the HTTPS certificate that is provided by the server. The code below is an example of using a static PEM certificate and SecurityContext. It also supports PKCS#12 certificates, but PKCS#12 certificates require a password to be used, which exposes the password in the code; hence, the project does not recommend using them in common cases.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="k">void</span> <span class="nx">initAdapter</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">String</span> <span class="nx">PEM</span> <span class="o">=</span> <span class="s1">&#39;XXXXX&#39;</span><span class="p">;</span> <span class="c1">// Root certificate content
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">dio</span><span class="p">.</span><span class="nx">httpClientAdapter</span> <span class="o">=</span> <span class="nx">IOHttpClientAdapter</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onHttpClientCreate</span><span class="o">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">final</span> <span class="nx">SecurityContext</span> <span class="nx">sc</span> <span class="o">=</span> <span class="nx">SecurityContext</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">sc</span><span class="p">.</span><span class="nx">setTrustedCertificates</span><span class="p">(</span><span class="nx">File</span><span class="p">(</span><span class="nx">pathToTheCertificate</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">final</span> <span class="nx">HttpClient</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">HttpClient</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span> <span class="nx">sc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The most interesting part is this line <code>sc.setTrustedCertificates(File(pathToTheCertificate));</code> This indicates that the app expects a static certificate file. After reading <a href="https://medium.com/@melkia.med.taki/how-to-use-tls-ssl-in-flutter-with-dio-15eda4f80baf" target="_blank">this article by Mohamed Malkia</a>, I immediately searched the source code for <strong>.pem</strong> and <strong>.key</strong> extensions. And guess what? I found actual references to these files:</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%209.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Going back to VSCode and using the search function, I typed <code>.pem</code> in the &ldquo;Search&rdquo; field and immediately got two references in the code, again in the <code>dio_http_service_imp.dart</code> file. Acessing these files we can get more details about the usage of the Dio package.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2010.png" alt="image" />
+      
+    </figure>
+</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2012.png" alt="image" />
+      
+    </figure>
+</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2013.png" alt="image" />
+      
+    </figure>
+</p>
+<p>The app reads the certificate bytes and implements them using Dart&rsquo;s SecurityContext methods <strong>useCertificateChainBytes</strong> and <strong>usePrivateKeyBytes</strong>. According to the documentation:</p>
+<ul>
+<li>useCertificateChainBytes: Sets the chain of X.509 certificates served by the SecureServerSocket during secure connections, including the server certificate.</li>
+<li>usePrivateKeyBytes: Sets the private key for the corresponding certificate.</li>
+</ul>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2014.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Interestingly, the application doesn&rsquo;t use standard ports like 443, 80, or 8080. Instead, the API is hosted on port <strong>444</strong>. This is crucial for properly configuring our proxy because if we try intercepting ports 443, 80, or 8080, we would probably only capture requests from third-party sources rather than those from the targeted application. Therefore, make sure to identify where the application is actually consuming data so that no important requests are missed.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2015.png" alt="image" />
+      
+    </figure>
+</p>
+<p>It is important to note that every Certificate Pinning mechanism can be bypassed if the attacker has the necessary time and patience. The main idea of these mechanisms is to offer more security to users, reducing risk and making attackers&rsquo; lives harder, but it will always be a cat-and-mouse game until vendors like Google and Apple develop technology to mitigate this problem (and I’m not even sure if that’s possible).</p>
+<br>
+
+
+<h3 class="relative group">Intercept, intercept and intercept 
+    <div id="intercept-intercept-and-intercept" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#intercept-intercept-and-intercept" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>After all this analysis, we&rsquo;re ready to intercept the traffic. Here&rsquo;s what we need to do:</p>
+<ol>
+<li>Create IPTables rules to redirect the traffic.</li>
+<li>Configure the proxy on our Android device (I&rsquo;m using an emulated Pixel 9 Pro).</li>
+<li>Set up Burp Suite.</li>
+<li>Use the NVISO disable-flutter-tls script.</li>
+</ol>
+<p>Starting with IPTables, IPTables is a utility program from Linux that helps users configure network rules. In our case, it&rsquo;s a really simple process—we just need to redirect the incoming traffic from port 444 to port 8080, where our Burp Suite proxy is running. The command I used for this is:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nl">emu64a</span><span class="p">:</span><span class="o">/</span><span class="w"> </span><span class="n">iptables</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">nat</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="n">OUTPUT</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">tcp</span><span class="w"> </span><span class="o">--</span><span class="n">dport</span><span class="w"> </span><span class="n">444</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="n">DNAT</span><span class="w"> </span><span class="o">--</span><span class="n">to</span><span class="o">-</span><span class="n">destination</span><span class="w"> </span><span class="o">&lt;</span><span class="n">local</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="n">8080</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">emu64a</span><span class="p">:</span><span class="o">/</span><span class="w"> </span><span class="n">iptables</span><span class="w"> </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">nat</span><span class="w"> </span><span class="o">-</span><span class="n">A</span><span class="w"> </span><span class="n">POSTROUTING</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">tcp</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">&lt;</span><span class="n">local</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">dport</span><span class="w"> </span><span class="n">8080</span><span class="w"> </span><span class="o">-</span><span class="n">j</span><span class="w"> </span><span class="n">MASQUERADE</span><span class="w">
+</span></span></span></code></pre></div><p>After that, we need to go to our Wi-Fi settings on our Android device and change the proxy setting from “None” to “Manual,” specifying the host and port we want. In this case, the host will be your local IP and the port will be the same as the Burp Suite proxy. This will allow our emulated device to communicate with our Burp Suite proxy client.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2016.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Now, for Burp Suite, we need to take the PEM and KEY files that are statically stored in the assets directory from the decompiled mobile app and generate a PKCS#12 file to later import into Burp Suite TLS settings. Why PKCS#12? Because Burp Suite TLS currently only supports PEM certificates.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl pkcs12 -export -out file.p12 -inkey key_file.key -in pem_file.pem -certifile pem_file.pem
+</span></span></code></pre></div><p>Here, the flags <code>-export</code> and <code>-out</code> specify that we want to write the certificate&rsquo;s content to an output file. The <code>-inkey</code> flag specifies the private key from the certificate, combined with the <code>-in</code> and <code>-certifile</code> flags to indicate to OpenSSL which files are our certificates—we can repeat the PEM certificate file here.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2017.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Now, go to your Burp Suite settings, navigate to the Network tab, and click on the “TLS” section. Scroll down to “Client TLS Certificates” and click the “Add” button to add a new certificate.</p>
+<p>In the “Destination host” input, enter the host address from the API or website whose traffic you want to intercept (you don&rsquo;t need to specify the port), and be sure to click the “File (PKCS#12)” radio button because you need to import your PKCS#12 file. After that, click the “Next” button.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2018.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Next, click the “Select file” button and locate the .p12 file you generated using the OpenSSL command. During the process of generating the file with OpenSSL, you will be prompted to set a password; you must enter the same password in the “Password” field below the “Certificate file” field.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2019.png" alt="image" />
+      
+    </figure>
+</p>
+<p>If everything goes well, your file will be loaded and you can even see some information about the imported certificate.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2020.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Now for the final steps with Burp Suite, go to the Proxy settings and make sure the “Bind to port” is the same from the IPTables and change the “Bind to address” from “Specific addres” to “All interfaces” making sure we actually can intercept the traffic. After that, go the “Request handling” tab and check the “Support invisible proxying” checkbox.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2021.png" alt="image" />
+      
+    </figure>
+</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2022.png" alt="image" />
+      
+    </figure>
+</p>
+<p>To finish, download the NVISOsecurity Frida script to disable Flutter’s TLS verification, <a href="https://github.com/NVISOsecurity/disable-flutter-tls-verification" target="_blank">you can find it here</a>. This script uses pattern matching to find <strong>ssl_verify_peer_cert</strong> in the <strong>handshake.cc</strong> file. The <strong>handshake.cc</strong> file is part of the <a href="https://github.com/google/boringssl/" target="_blank">BoringSSL project</a>, a fork of OpenSSL used by Chrome/Chromium and Android. To execute the script, ensure that the Frida server is running on your Android device (it can be done via ADB) and run the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">frida -U -f your.package.name -l disable-flutter-tls.js --no-pause
+</span></span></code></pre></div><p>Don&rsquo;t forget that you need to have the Burp Suite certificate installed on your device. There are various methods to do this, so I won&rsquo;t cover that process here; however, you can find plenty of resources online that explain how to do it.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2023.png" alt="image" />
+      
+    </figure>
+</p>
+<p>Frida will run the app for us, so we go to Burp Suite and “HTTP History” tab we can see that now we can successfully intercept the app HTTP/HTTPS traffic.</p>
+<p>
+    <figure>
+      <img class="my-0 rounded-md" loading="lazy" src="img/image%2024.png" alt="image" />
+      
+    </figure>
+</p>
+<br>
+
+
+<h2 class="relative group">References 
+    <div id="references" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#references" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://docs.flutter.dev/" target="_blank">https://docs.flutter.dev/</a></li>
+<li><a href="https://dart.dev/overview" target="_blank">https://dart.dev/overview</a></li>
+<li><a href="https://onuoha.medium.com/how-does-jit-and-aot-work-in-dart-cab2f31d9cb5" target="_blank">https://onuoha.medium.com/how-does-jit-and-aot-work-in-dart-cab2f31d9cb5</a></li>
+<li><a href="https://github.com/worawit/blutter" target="_blank">https://github.com/worawit/blutter</a></li>
+<li><a href="https://wiki.mozilla.org/SecurityEngineering/Public_Key_Pinning" target="_blank">https://wiki.mozilla.org/SecurityEngineering/Public_Key_Pinning</a></li>
+<li><a href="https://oleksandr-stepanov.medium.com/ssl-pinning-how-to-make-it-right-ecc5c9844215" target="_blank">https://oleksandr-stepanov.medium.com/ssl-pinning-how-to-make-it-right-ecc5c9844215</a></li>
+<li><a href="https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning" target="_blank">https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning</a></li>
+<li><a href="https://medium.com/@melkia.med.taki/how-to-use-tls-ssl-in-flutter-with-dio-15eda4f80baf" target="_blank">https://medium.com/@melkia.med.taki/how-to-use-tls-ssl-in-flutter-with-dio-15eda4f80baf</a></li>
+<li><a href="https://api.flutter.dev/flutter/dart-io/SecurityContext/usePrivateKeyBytes.html" target="_blank">https://api.flutter.dev/flutter/dart-io/SecurityContext/usePrivateKeyBytes.html</a></li>
+<li><a href="https://api.flutter.dev/flutter/dart-io/SecurityContext/useCertificateChainBytes.html" target="_blank">https://api.flutter.dev/flutter/dart-io/SecurityContext/useCertificateChainBytes.html</a></li>
+<li><a href="https://github.com/NVISOsecurity/disable-flutter-tls-verification" target="_blank">https://github.com/NVISOsecurity/disable-flutter-tls-verification</a></li>
+</ul>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+        
+
+          
+      </div>
+     
+      
+      
+        
+        
+          
+          
+        
+      <script>
+        var oid = "views_posts\/intercept-dio-brando-dart-package-https-requests\/index.md"
+        var oid_likes = "likes_posts\/intercept-dio-brando-dart-package-https-requests\/index.md"
+      </script>
+      
+      
+      <script type="text/javascript" src="/js/page.min.0860cf4e04fa2d72cc33ddba263083464d48f67de06114529043cb4623319efed4f484fd7f1730df5abea0e2da6f3538855634081d02f2d6e920b956f063e823.js" integrity="sha512-CGDPTgT6LXLMM926JjCDRk1I9n3gYRRSkEPLRiMxnv7U9IT9fxcw31q&#43;oOLabzU4hVY0CB0C8tbpILlW8GPoIw=="></script>
+      
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/bypassing-protections-of-a-banking-app-just-to-learn/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Bypassing protections of a banking app just to learn</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-01-20T00:00:00&#43;00:00">20 January 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href=""
+            title="">
+            
+            
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2025
+      oppsec
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="http://localhost:1313/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

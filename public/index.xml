@@ -2,30 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>1337.coffee</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 1337.coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2024 oppsec</copyright>
-    <lastBuildDate>Fri, 22 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025 oppsec</copyright>
+    <lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intercepting Dio (Brando) Dart package HTTPS requests</title>
+      <link>http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/intercept-dio-brando-dart-package-https-requests/featured.png" />
+    </item>
+    
+    <item>
+      <title>Bypassing protections of a banking app just to learn</title>
+      <link>http://localhost:1313/posts/bypassing-protections-of-a-banking-app-just-to-learn/</link>
+      <pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/bypassing-protections-of-a-banking-app-just-to-learn/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/bypassing-protections-of-a-banking-app-just-to-learn/featured.png" />
+    </item>
+    
+    <item>
+      <title>Discovering a 0-day Authenticated RCE on my router</title>
+      <link>http://localhost:1313/posts/discovering-0-day-authenticated-rce-on-my-router/</link>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/discovering-0-day-authenticated-rce-on-my-router/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/discovering-0-day-authenticated-rce-on-my-router/featured.png" />
+    </item>
+    
     <item>
       <title>Attacking Azure Blob Storage Services</title>
-      <link>//localhost:1313/posts/attacking-azure-blob-storage-services/</link>
+      <link>http://localhost:1313/posts/attacking-azure-blob-storage-services/</link>
       <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/attacking-azure-blob-storage-services/</guid>
+      <guid>http://localhost:1313/posts/attacking-azure-blob-storage-services/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/posts/attacking-azure-blob-storage-services/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/attacking-azure-blob-storage-services/featured.png" />
     </item>
     
     <item>
       <title>Security Descriptor, o que é e onde vive.</title>
-      <link>//localhost:1313/posts/security-descriptor/</link>
+      <link>http://localhost:1313/posts/security-descriptor/</link>
       <pubDate>Thu, 24 Oct 2024 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/posts/security-descriptor/</guid>
+      <guid>http://localhost:1313/posts/security-descriptor/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/posts/security-descriptor/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/security-descriptor/featured.jpg" />
     </item>
     
   </channel>
