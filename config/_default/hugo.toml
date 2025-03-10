@@ -1,7 +1,3 @@
-# -- Site Configuration --
-# Refer to the theme docs for more details about each of these parameters.
-# https://blowfish.page/docs/getting-started/
-
 theme = "blowfish" # UNCOMMENT THIS LINE
 baseURL = "https://1337.coffee/"
 defaultContentLanguage = "en"
@@ -15,8 +11,6 @@ buildDrafts = false
 buildFuture = false
 
 enableEmoji = true
-
-# googleAnalytics = "G-XXXXXXXXX"
 
 [imaging]
   anchor = 'Center'

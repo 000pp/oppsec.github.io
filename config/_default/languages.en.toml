@@ -10,6 +10,6 @@ isoCode = "en"
 rtl = false
 dateFormat = "2 January 2006"
 description = "Take a coffee and a break."
-author = { name = "oppsec", headline = "Pentester and design enjoyer" }
+author = { name = "oppsec", headline = "Unintentional vulnerability discoverer" }
 logo = "website_icon.png"
 image = "me.png"

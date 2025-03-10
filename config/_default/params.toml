@@ -15,7 +15,7 @@ layout = "basic"
 [footer]
 showMenu = true
 showCopyright = true
-showThemeAttribution = true
+showThemeAttribution = false
 showAppearanceSwitcher = true
 showScrollToTop = true
 
@@ -23,7 +23,7 @@ showScrollToTop = true
 layout = "page"
 showRecent = true
 showRecentItems = 5
-showMoreLink = false
+showMoreLink = true
 showMoreLinkDest = "/posts/"
 cardView = "enable"
 cardViewScreenWidth = false
@@ -48,11 +48,11 @@ showHeadingAnchors = true
 showPagination = true
 invertPagination = false
 showReadingTime = true
-showTableOfContents = false
+showTableOfContents = true
 showTaxonomies = true
 showAuthorsBadges = false
 showWordCount = true
-showZenMode = true
+showZenMode = false
 
 [list]
 showHero = false
